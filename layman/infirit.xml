@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+<repo quality="experimental" status="official">
+<name>infirit</name>
+<description>infirit's ebuilds</description>
+<homepage>https://github.com/infirit/infirit/</homepage>
+<owner type="project">
+	<email>infirit@gmail.com</email>
+	<name>Infirit</name>
+</owner>
+<source type="git">git://github.com/infirit/infirit.git</source>
+<feed>https://github.com/infirit/infirit/commits/master.atom</feed>
+</repo>
+</repositories>
