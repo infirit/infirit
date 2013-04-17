@@ -35,7 +35,7 @@ pkg_setup() {
 src_prepare() {
 	edos2unix engines/togaII1.2.1a/src/Makefile
 	epatch "${FILESDIR}"/${PN}-4.3-gentoo.patch \
-		"${FILESDIR}"/${P}-parallelmake.patch
+		"${FILESDIR}"/${PN}-4.3-parallelmake.patch
 	sed -i \
 		-e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}/${PN}:" \
 		tcl/config.tcl \
