@@ -25,7 +25,7 @@ DEPEND="=dev-lang/tk-8.5*
 RDEPEND="${DEPEND}
 	!games-board/chessdb"
 
-S=${WORKDIR}/${PN}
+#S=${WORKDIR}/${PN}
 
 pkg_setup() {
 	python_set_active_version 2
