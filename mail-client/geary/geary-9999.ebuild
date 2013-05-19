@@ -21,12 +21,12 @@ CDEPEND="
 	app-crypt/libsecret
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-libs/libgee:0
+	>=dev-libs/libgee-0.8.0:0
 	dev-libs/libunique:3
 	dev-libs/gmime:2.6
 	>=gnome-base/libgnome-keyring-3.2.2
 	media-libs/libcanberra
-	net-libs/webkit-gtk:3
+	>=net-libs/webkit-gtk-1.10.0:3
 	>=x11-libs/gtk+-3.4.0:3
 	x11-libs/libnotify"
 RDEPEND="${CDEPEND}
