@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://yorba.org/geary"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="gnome-keyring nls"
+IUSE="nls"
 
 CDEPEND="
 	app-crypt/libsecret
@@ -24,7 +24,7 @@ CDEPEND="
 	dev-libs/libgee:0
 	dev-libs/libunique:3
 	dev-libs/gmime:2.6
-	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.2.2 )
+	>=gnome-base/libgnome-keyring-3.2.2
 	media-libs/libcanberra
 	net-libs/webkit-gtk:3
 	>=x11-libs/gtk+-3.4.0:3
