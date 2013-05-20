@@ -29,7 +29,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
-	dev-qt/qttest:5
+	dev-qt/qttools:5
 	dev-qt/qtwebkit:5[widgets]
 	dev-qt/qtxmlpatterns:5
 	>=sys-libs/zlib-1.2.7[minizip]"
