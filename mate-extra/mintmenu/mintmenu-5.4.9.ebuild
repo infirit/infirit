@@ -3,7 +3,10 @@
 # $Header: $
 
 EAPI=5
-inherit eutils mate-utils
+
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit eutils mate-utils python-single-r1
 
 DESCRIPTION="MintMenu supports filtering, favorites, easy-uninstallation, autosession, and many other features."
 SRC_URI="http://packages.linuxmint.com/pool/main/m/mintmenu/${PN}_${PV}.tar.gz"
@@ -28,6 +31,7 @@ RDEPEND=">=dev-lang/python-2.4.6
 	dev-python/python-xlib
 	dev-python/configobj
 	dev-python/pygtk
+	dev-python/pygobject:2
 	dev-python/pyxdg
 	x11-misc/mate-menu-editor
 	mate-base/mate-panel[introspection]
@@ -42,6 +46,7 @@ src_prepare() {
 	mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml \
 	|| die
 
+	python_fix_shebang .
 }
 
 src_install() {
@@ -51,6 +56,10 @@ src_install() {
 	dodir /usr/share/
 	cp -R mintmenu/usr/share/* ${D}/usr/share/
 	dodoc mintmenu/debian/changelog 
+
+	python_optimize ${ED}/usr/bin/mintmenu
+	python_optimize ${ED}/usr/lib64/linuxmint/mintMenu
+	python_optimize ${ED}/usr/lib64/linuxmint/mintMenu/plugins
 }
 
 pkg_preinst() {
@@ -59,6 +68,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	mate_schemas_update
+
 
 }
 
