@@ -4,24 +4,26 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_6,2_7} )
-
-inherit eutils mate-utils python-single-r1 l10n
-
-DESCRIPTION="MintMenu supports filtering, favorites, easy-uninstallation, autosession, and many other features."
-SRC_URI="http://packages.linuxmint.com/pool/main/m/mintmenu/${PN}_${PV}.tar.gz"
-MINT_TRANSLATIONS="mint-translations_2013.05.04.tar.gz"
-LANG_URL="http://packages.linuxmint.com/pool/main/m/mint-translations/${MINT_TRANSLATIONS}"
-HOMEPAGE="http://linuxmint.com"
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
-
 PLOCALES=" \
 	af am ar ast be ber bg bn bs ca ckb csb cs cy da de el en_AU en_CA \
 	en_GB eo es et eu fa fi fo fr gl gv he hi hr hu hy id is it ja jv kk \
 	kn ko lt lv mk ml mr ms nb nds nl nn oc pa pl pt_BR pt ro ru si sk sl \
 	sq sr sv ta te th tr uk ur vi zh_CN zh_HK zh_TW"
+
+PLOCALE_BACKUP="en"
+
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit eutils mate-utils python-single-r1 l10n
+
+DESCRIPTION="MintMenu supports filtering, favorites, easy-uninstallation, autosession, and many other features."
+MINT_TRANSLATIONS="mint-translations_2013.11.26.tar.gz"
+LANG_URL="http://packages.linuxmint.com/pool/main/m/mint-translations/${MINT_TRANSLATIONS}"
+SRC_URI="http://packages.linuxmint.com/pool/main/m/mintmenu/${PN}_${PV}.tar.gz ${LANG_URL}"
+HOMEPAGE="http://linuxmint.com"
+LICENSE="GPL-2"
+KEYWORDS="~amd64 ~x86"
+SLOT="0"
 
 RDEPEND=">=dev-lang/python-2.4.6
 	<dev-lang/python-3.1.1-r1
@@ -37,6 +39,10 @@ RDEPEND=">=dev-lang/python-2.4.6
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
+
+src_unpack() {
+	unpack ${A}
+}
 
 src_prepare() {
 	# Install in correct libdir
@@ -69,17 +75,25 @@ src_prepare() {
 	python_fix_shebang .
 }
 
+my_locale_install() {
+	dodir /usr/share/linuxmint/locale/${1}/LC_MESSAGES
+	insinto /usr/share/linuxmint/locale/${1}/LC_MESSAGES
+	doins mint-translations-*/usr/share/linuxmint/locale/${1}/LC_MESSAGES/mintmenu.mo
+}
+
 src_install() {
 	dobin mintmenu/usr/bin/mintmenu
 	dodir /usr/$(get_libdir)/linuxmint/
 	cp -R mintmenu/usr/lib/linuxmint/* ${D}/usr/$(get_libdir)/linuxmint/ || die
 	dodir /usr/share/
 	cp -R mintmenu/usr/share/* ${D}/usr/share/
-	dodoc mintmenu/debian/changelog 
+	dodoc mintmenu/debian/changelog
 
 	python_optimize ${ED}/usr/bin/mintmenu
 	python_optimize ${ED}/usr/lib64/linuxmint/mintMenu
 	python_optimize ${ED}/usr/lib64/linuxmint/mintMenu/plugins
+
+	l10n_for_each_locale_do my_locale_install
 }
 
 pkg_preinst() {
