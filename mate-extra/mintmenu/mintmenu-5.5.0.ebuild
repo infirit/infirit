@@ -40,10 +40,6 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
 
-src_unpack() {
-	unpack ${A}
-}
-
 src_prepare() {
 	# Install in correct libdir
 	sed -e "s:/usr/lib:/usr/$(get_libdir):g" -i \
