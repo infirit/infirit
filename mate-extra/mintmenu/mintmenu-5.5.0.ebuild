@@ -25,16 +25,14 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-RDEPEND=">=dev-lang/python-2.4.6
-	<dev-lang/python-3.1.1-r1
-	dev-python/python-xlib
-	dev-python/configobj
-	dev-python/pygtk
-	dev-python/pygobject:2
-	dev-python/pyxdg
-	x11-misc/mate-menu-editor
-	mate-base/mate-panel[introspection]
-	mate-base/mate-menus[python]"
+RDEPEND="${PYTHON_DEPS}
+	dev-python/python-xlib[${PYTHON_USEDEP}]
+	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-python/pyxdg[${PYTHON_USEDEP}]
+	x11-misc/mate-menu-editor[${PYTHON_USEDEP}]
+	mate-base/mate-panel[introspection,${PYTHON_USEDEP}]
+	mate-base/mate-menus[python,${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}"
 
@@ -44,7 +42,7 @@ src_prepare() {
 	# Install in correct libdir
 	sed -e "s:/usr/lib:/usr/$(get_libdir):g" -i \
 	mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml \
-	|| die
+	mintmenu/usr/bin/mintmenu || die
 	# Correct for the correct locale path.
 	sed -e "s:/usr/share/linuxmint/locale:/usr/share/locale:g" -i \
 		mintmenu/usr/lib/linuxmint/mintMenu/mintMenuConfig.py \
