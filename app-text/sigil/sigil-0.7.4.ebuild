@@ -13,7 +13,7 @@ DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format."
 HOMEPAGE="http://code.google.com/p/sigil/"
 SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.zip"
 
-LICENSE="CC-BY-SA-3.0 GPL-3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
