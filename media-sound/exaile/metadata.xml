@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="moodbar">Enable gstreamer plugin <pkg>media-sound/moodbar</pkg> for tracks</flag>
+		<flag name="scrobbler"> Enable support for scrobbler service like lastfm</flag>
+	</use>
+	<upstream>
+		<remote-id type="launchpad">exaile</remote-id>
+		<remote-id type="github">exaile/exaile</remote-id>
+	</upstream>
+</pkgmetadata>
