@@ -65,7 +65,7 @@ src_compile() {
 src_install() {
 	emake \
 		PREFIX=/usr \
-		LIBINSTALLDIR=/$(get_libdir) \
+		LIBINSTALLDIR=/usr/$(get_libdir) \
 		DESTDIR="${D}" \
 		install$(use nls || echo _no_locale)
 
