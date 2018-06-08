@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit multilib python-single-r1 versionator xdg-utils
+inherit eapi7-ver multilib python-single-r1 xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -14,8 +14,8 @@ if [[ ${PV} == "9999" ]] ; then
 	MY_PV="${PV}"
 	KEYWORDS=""
 else
+	MY_PV="$(ver_rs 3 '-')"
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	MY_PV="$(replace_version_separator 3 '-')"
 	KEYWORDS="~amd64 ~x86 ~arm"
 fi
 
